@@ -15,22 +15,37 @@ export default function App() {
     }
 
     return (
-        <div>
-            <h1>Github Random Repository Project</h1>
-            <select
-                name="language"
-                id="language"
-                value={currentLanguage}
-                onChange={(e) => setCurrentLanguage(e.target.value)}
-            >
-                <option value="JavaScript">JavaScript</option>
-                <option value="Python">Python</option>
-                <option value="Java">Java</option>
-                <option value="Php">Php</option>
-            </select>
-            <button onClick={searchClickHandler}>Search</button>
+        <main className="app">
+            <h1 className="app-title">GitHub Random Repository</h1>
+            <p className="app-subtitle">
+                Pick a language and discover a random project.
+            </p>
+
+            <div className="controls">
+                <label htmlFor="language" className="sr-only">
+                    Language
+                </label>
+                <select
+                    name="language"
+                    id="language"
+                    className="select"
+                    value={currentLanguage}
+                    onChange={(e) => setCurrentLanguage(e.target.value)}
+                >
+                    <option value="JavaScript">JavaScript</option>
+                    <option value="Python">Python</option>
+                    <option value="Java">Java</option>
+                    <option value="Php">Php</option>
+                </select>
+                <button
+                    className="btn btn-primary"
+                    onClick={searchClickHandler}
+                >
+                    Search
+                </button>
+            </div>
 
             {showResult && <ResultComponent language={finalLanguage} />}
-        </div>
+        </main>
     );
 }

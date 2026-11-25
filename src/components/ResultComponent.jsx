@@ -56,17 +56,36 @@ export default function ResultComponent({ language }) {
     }, [fetchData]);
 
     return (
-        <div>
-            <h1>Result Card</h1>
-            <p>{language}</p>
+        <div className="card">
+            <div className="card-header">
+                <h2>Result</h2>
+                <span className="badge">{language}</span>
+            </div>
 
-            {isLoading && <p>Loading...</p>}
+            {isLoading && <p className="status">Loading...</p>}
 
-            {error && <p role="alert">{error}</p>}
+            {!isLoading && error && (
+                <p role="alert" className="status error">
+                    {error}
+                </p>
+            )}
 
-            {!isLoading && repo && <div>{repo.name}</div>}
+            {!isLoading && repo && (
+                <a
+                    className="repo-link"
+                    href={repo.html_url}
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    {repo.name}
+                </a>
+            )}
 
-            <button onClick={() => fetchData()} disabled={isLoading}>
+            <button
+                className="btn btn-secondary"
+                onClick={() => fetchData()}
+                disabled={isLoading}
+            >
                 Refresh
             </button>
         </div>

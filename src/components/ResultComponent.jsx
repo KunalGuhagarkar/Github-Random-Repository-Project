@@ -35,6 +35,7 @@ export default function ResultComponent({ language }) {
                 const randomRepo =
                     data.items[Math.floor(Math.random() * data.items.length)];
                 setRepo(randomRepo);
+                console.log(randomRepo);
             } catch (err) {
                 if (err.name !== "AbortError") {
                     setError(err.message);
@@ -71,14 +72,35 @@ export default function ResultComponent({ language }) {
             )}
 
             {!isLoading && repo && (
-                <a
-                    className="repo-link"
-                    href={repo.html_url}
-                    target="_blank"
-                    rel="noreferrer"
-                >
-                    {repo.name}
-                </a>
+                <div className="repo-details">
+                    <a
+                        className="repo-link"
+                        href={repo.html_url}
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        {repo.name}
+                    </a>
+
+                    <p className="repo-description">
+                        {repo.description || "No description provided."}
+                    </p>
+
+                    <dl className="repo-stats">
+                        <div className="stat">
+                            <dt>Stars</dt>
+                            <dd>{repo.stargazers_count.toLocaleString()}</dd>
+                        </div>
+                        <div className="stat">
+                            <dt>Forks</dt>
+                            <dd>{repo.forks_count.toLocaleString()}</dd>
+                        </div>
+                        <div className="stat">
+                            <dt>Open issues</dt>
+                            <dd>{repo.open_issues_count.toLocaleString()}</dd>
+                        </div>
+                    </dl>
+                </div>
             )}
 
             <button

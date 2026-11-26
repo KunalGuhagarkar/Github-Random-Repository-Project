@@ -32,7 +32,12 @@ body {
     margin: 0;
     background: var(--bg);
     color: var(--text);
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-family:
+        system-ui,
+        -apple-system,
+        "Segoe UI",
+        Roboto,
+        sans-serif;
     line-height: 1.5;
 }
 
@@ -78,7 +83,9 @@ body {
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    transition: background 0.15s, opacity 0.15s;
+    transition:
+        background 0.15s,
+        opacity 0.15s;
 }
 
 .btn:disabled {
@@ -171,3 +178,53 @@ body {
     white-space: nowrap;
 }
 
+.repo-details {
+    margin-bottom: 20px;
+}
+
+/* Replaces the earlier margin so spacing is controlled by .repo-details */
+.repo-details .repo-link {
+    margin-bottom: 8px;
+}
+
+.repo-description {
+    margin: 0 0 20px;
+    color: var(--muted);
+    word-break: break-word;
+}
+
+.repo-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 0;
+}
+
+.stat {
+    padding: 12px 8px;
+    text-align: center;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+}
+
+.stat dt {
+    margin-bottom: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.stat dd {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+@media (max-width: 420px) {
+    .repo-stats {
+        grid-template-columns: 1fr;
+    }
+}
